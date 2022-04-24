@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="weatherbox">
+            <h1>checkWeatherApp</h1>
+            <div class="form-holder">
+                <form action="">
+                    <input type="text" name="location" id="location" placeholder="Your City">
+                    <button type="button" id="search"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="30"
+                            fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button>
+                    <button type="button" id="geolocation"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="30" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                        </svg></button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="weather-info">
+
+            <div class="temperature-data">
+                <div class="city-data">
+                    <div><span id="maintemp">22.2</span><span> &deg;</span><span class="tempunit">C</span></div>
+                    <div class="city">Charlotte, US</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="weather-description-main">
+                    <div class="weather-description" id="skycondition">Clouds</div>
+                    <div class="weather-description-sub" id="clouddetails">Few Clouds</div>
+                </div>
+
+            </div>
+
+            <div class="misc-data">
+                <div class="misc-data-item">
+                    <div class="item-title">
+                        Feels Like
+                    </div>
+                    <div><span id="temp">0</span><span> &deg;</span><span class="tempunit">C</span></div>
+                </div>
+                <div class="misc-data-item">
+                    <div class="item-title">
+                        Humidity
+                    </div>
+                    <div><span id="humidity">61</span><span> %</span></div>
+                </div class="item-title">
+                <div class="misc-data-item">
+                    <div class="item-title">
+                        Pressure
+                    </div>
+                    <div><span id="pressure">1023</span><span> inHg</span></div>
+                </div>
+                <div class="misc-data-item">
+                    <div class="item-title">
+                        Min Temp
+                    </div>
+                    <div><span id="mintemp">22</span><span> &deg;</span><span class="tempunit">C</span></div>
+                </div>
+                <div class="misc-data-item">
+                    <div class="item-title">
+                        Max Temp
+                    </div>
+                    <div><span id="maxtemp">62</span><span> &deg;</span><span class="tempunit">C</span></div>
+                </div>
+            </div>
+            <button id="unitsbutton">Change Units</button>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: #83BD75;
+    font-family: 'Nunito', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 98vh;
+    padding: 0;
+    margin: 0;
+}
+
+.weatherbox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 200px;
+    font-size: 45px;
+    border-radius: 25px;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    margin-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    background-color: #83BD75;
+    border-color: #E9EFC0;
+    font-weight: bold;
+
+
+}
+
+button {
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #E9EFC0;
+
+}
+
+button:hover {
+    background-color: #B4E197;
+    cursor: pointer;
+}
+
+.form-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-line {
+    border: 1px solid black;
+    height: 200px;
+    margin: 20px;
+}
+
+.temperature-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    width: 100%;
+}
+
+.city-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    width: 50%;
+}
+
+.city {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    width: 100%;
+}
+
+.weather-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.weather-description-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.weather-description-sub {
+    font-size: 25px;
+}
+
+.weather-info {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 30%);
+    border-radius: 15px;
+    padding: 25px;
+    display: none;
+}
+
+.misc-data {
+    display: flex;
+    justify-content: center;
+}
+
+.misc-data-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+}
+
+.item-title {
+    color: rgb(78, 148, 79);
+    font-weight: bolder;
+}
+
+.weather-info button {
+    width: 100%;
+    border-radius: 15px;
+}
