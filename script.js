@@ -102,7 +102,7 @@ function updateDisplay(city, lat, lon) {
         }
         if (parseInt(e.cloudness) > 50) {
             skyConditionDisplay.textContent = "Clouds";
-            cloudDetail.textContent = "Very Cloudly";
+            cloudDetail.textContent = "Very Cloudy";
         }
 
     })
