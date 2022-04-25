@@ -85,12 +85,12 @@ function updateDisplay(city, lat, lon) {
 
     data.then(e => {
         cityDisplay.textContent = `${e.cityName}, ${e.country}`;
-        temperature.textContent = e.currentTemp;
-        feelstemperatureDisplay.textContent = e.feelsLikeTemp;
+        temperature.textContent = parseFloat(e.currentTemp).toFixed(1);
+        feelstemperatureDisplay.textContent = e.feelsLikeTemp.toFixed(1);
         humidityDisplay.textContent = e.humidity;
         pressureDisplay.textContent = Math.floor(parseInt(e.pressure) * 0.02952998307144475);
-        minTempDisplay.textContent = e.lowTemp;
-        maxTempDisplay.textContent = e.highTemp;
+        minTempDisplay.textContent = e.lowTemp.toFixed(1);
+        maxTempDisplay.textContent = e.highTemp.toFixed(1);
 
         if (parseInt(e.cloudness) == 0) {
             skyConditionDisplay.textContent = "Clear";
@@ -117,13 +117,14 @@ function changeUnits() {
     const maxTempDisplay = document.getElementById("maxtemp");
     const unitSymbol = document.querySelectorAll(".tempunit");
 
+    let temperatureValue = temperature.textContent;
 
     function convertToC(tempInF) {
-        return Math.floor((parseInt(tempInF) - 32) * (5 / 9));
+        return ((tempInF - 32) * 5 / 9).toFixed(1);
     }
 
     function convertToF(tempInC) {
-        return Math.floor((parseInt(tempInC) * (9 / 5)) + 32);
+        return (tempInC * 9 / 5 + 32).toFixed(1);
     }
 
     if (currentUnits == "C") {
@@ -146,4 +147,6 @@ function changeUnits() {
 
 }
 
-
+function convertToF(tempInC) {
+    return Math.floor((parseFloat(tempInC) * (9 / 5)) + 32)
+}
