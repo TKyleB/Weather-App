@@ -2,7 +2,7 @@ const getGeoLocationButton = document.getElementById("geolocation");
 const searchButton = document.getElementById("search");
 const unitsButton = document.getElementById("unitsbutton");
 unitsButton.addEventListener("click", changeUnits);
-searchButton.addEventListener("click", searchWeather);
+searchButton.addEventListener("click", e => searchWeather(e));
 getGeoLocationButton.addEventListener("click", getGeoLocation);
 let currentUnits = "C";
 const APIKEY = "9e2784936f680d48653338cba21190e3";
@@ -25,19 +25,13 @@ function getGeoLocation() {
 
 }
 
-function searchWeather() {
+function searchWeather(event) {
     const location = document.getElementById("location");
-    updateDisplay(location.value);
-}
-
-
-async function getCoordinates(zipCode, countryCode) {
-    const geoAPIURL = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${APIKEY}`;
-    const response = await fetch(geoAPIURL);
-    const data = await response.json();
-    return { lat: data.lat, lon: data.lon };
+    if (location.checkValidity()) updateDisplay(location.value);
+    else location.reportValidity();
 
 }
+
 
 async function getWeather(city, lat, lon) {
     let weatherAPIURL;
@@ -50,7 +44,6 @@ async function getWeather(city, lat, lon) {
 
     const response = await fetch(weatherAPIURL);
     const data = await response.json();
-    console.log(data);
     let cityName = data.name;
     let country = data.sys.country;
     let currentTemp = data.main.temp;
@@ -69,21 +62,23 @@ function updateDisplay(city, lat, lon) {
     let data;
     if (city == "none") data = getWeather("none", lat, lon);
     if (city != "none") data = getWeather(city);
-    const mainDisplay = document.querySelector(".weatherbox");
-    mainDisplay.style.display = "none";
-    const weatherInfoDisplay = document.querySelector(".weather-info");
-    weatherInfoDisplay.style.display = "block";
-    const temperature = document.getElementById("maintemp")
-    const skyConditionDisplay = document.getElementById("skycondition");
-    const cloudDetail = document.getElementById("clouddetails");
-    const cityDisplay = document.querySelector(".city");
-    const feelstemperatureDisplay = document.getElementById("temp");
-    const humidityDisplay = document.getElementById("humidity");
-    const pressureDisplay = document.getElementById("pressure");
-    const minTempDisplay = document.getElementById("mintemp");
-    const maxTempDisplay = document.getElementById("maxtemp");
+
 
     data.then(e => {
+        const mainDisplay = document.querySelector(".weatherbox");
+        mainDisplay.style.display = "none";
+        const weatherInfoDisplay = document.querySelector(".weather-info");
+        weatherInfoDisplay.style.display = "block";
+        const temperature = document.getElementById("maintemp")
+        const skyConditionDisplay = document.getElementById("skycondition");
+        const cloudDetail = document.getElementById("clouddetails");
+        const cityDisplay = document.querySelector(".city");
+        const feelstemperatureDisplay = document.getElementById("temp");
+        const humidityDisplay = document.getElementById("humidity");
+        const pressureDisplay = document.getElementById("pressure");
+        const minTempDisplay = document.getElementById("mintemp");
+        const maxTempDisplay = document.getElementById("maxtemp");
+
         cityDisplay.textContent = `${e.cityName}, ${e.country}`;
         temperature.textContent = parseFloat(e.currentTemp).toFixed(1);
         feelstemperatureDisplay.textContent = e.feelsLikeTemp.toFixed(1);
@@ -105,6 +100,8 @@ function updateDisplay(city, lat, lon) {
             cloudDetail.textContent = "Very Cloudy";
         }
 
+    }).catch((error) => {
+        console.log("There was an ERROR");
     })
 
 
