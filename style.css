@@ -25,6 +25,7 @@ body {
     padding-bottom: 200px;
     font-size: 45px;
     border-radius: 25px;
+
 }
 
 h1 {
@@ -148,4 +149,18 @@ button:hover {
 .weather-info button {
     width: 100%;
     border-radius: 15px;
+}
+
+.error {
+    font-size: 18px;
+    align-self: flex-end;
+    color: #ff0033;
+    padding-right: 120px;
+    display: none;
+
+}
+
+.button-holder {
+    display: flex;
+    gap: 20px;
 }

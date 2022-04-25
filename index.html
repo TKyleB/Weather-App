@@ -18,7 +18,7 @@
         <div class="weatherbox">
             <h1>checkWeatherApp</h1>
             <div class="form-holder">
-                <form action="">
+                <form id="locationform">
                     <input type="text" name="location" id="location" placeholder="Your City" required>
                     <button type="button" id="search"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="30"
                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -30,13 +30,15 @@
                             <path
                                 d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                         </svg></button>
+                    <div class="error">Error. Invalid City</div>
                 </form>
+
             </div>
+
 
         </div>
 
         <div class="weather-info">
-
             <div class="temperature-data">
                 <div class="city-data">
                     <div><span id="maintemp"></span><span> &deg;</span><span class="tempunit">C</span></div>
@@ -82,7 +84,10 @@
                     <div><span id="maxtemp"></span><span> &deg;</span><span class="tempunit">C</span></div>
                 </div>
             </div>
-            <button id="unitsbutton">Change Units</button>
+            <div class="button-holder">
+                <button id="unitsbutton">Change Units</button>
+                <button id="restart">Different City?</button>
+            </div>
         </div>
 
 
