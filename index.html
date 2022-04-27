@@ -47,19 +47,22 @@
             </div>
             <div class="d-flex flex-column justify-content-center align-items-center weather-info d-none">
                 <div class="bg-white border rounded p-4 ">
-                    <div class="d-flex rounded justify-content-evenly">
-                        <div class="d-flex flex-column justify-content-center align-items-center px-md-4">
-                            <div class="fs-1"><span id="maintemp"></span><span>&deg;</span> <span
+                    <div class="row">
+                        <div
+                            class="col d-flex flex-column justify-content-center align-items-center border-end border-3">
+                            <div class="fs-2"><span id="maintemp"></span><span>&deg;</span> <span
                                     class="tempunit">C</span></div>
-                            <div class="fs-2 city"></div>
+                            <div class="fs-5 city"></div>
                         </div>
-                        <div class="vr mx-md-2"></div>
-                        <div class="d-flex flex-column justify-content-center align-items-center px-md-4">
-                            <div class="fs-1" id="skycondition"></div>
-                            <div class="fs-2" id="clouddetails"></div>
+
+
+
+                        <div class="col d-flex flex-column justify-content-center align-items-center">
+                            <div class="fs-2" id="skycondition"></div>
+                            <div class="fs-5" id="clouddetails"></div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2 mb-2">
 
                         <div class="col-4 text-center">
                             <div class="units">Feels Like</div>
@@ -83,8 +86,8 @@
                             <div><span id="humidity"></span><span> %</span></div>
                         </div>
                         <div class="col-4 text-center">
-                            <div class="units">Wind Speed</div>
-                            <div><span id="windspeed"></span><span> m/s</span></div>
+                            <div class="units">Wind Spd</div>
+                            <div><span id="windspeed"></span><span id="speedunits"> m/s</span></div>
                         </div>
 
 

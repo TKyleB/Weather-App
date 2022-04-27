@@ -3,10 +3,12 @@ const searchButton = document.getElementById("search");
 const unitsButton = document.getElementById("unitsbutton");
 const restartButton = document.getElementById("restart");
 restartButton.addEventListener("click", restartApp);
-unitsButton.addEventListener("click", changeUnits);
+unitsButton.addEventListener("click", changeTempUnits);
+unitsButton.addEventListener("click", convertSpeedUnits);
 searchButton.addEventListener("click", e => searchWeather(e));
 getGeoLocationButton.addEventListener("click", getGeoLocation);
 let currentUnits = "C";
+let currentSpeedUnits = "M";
 const APIKEY = "9e2784936f680d48653338cba21190e3";
 
 function restartApp() {
@@ -14,6 +16,14 @@ function restartApp() {
     const weatherInfoDisplay = document.querySelector(".weather-info");
     const location = document.getElementById("location");
     const errorMessage = document.querySelector(".error");
+    const speedUnitsDisplay = document.getElementById("speedunits");
+    const unitSymbol = document.querySelectorAll(".tempunit");
+    currentSpeedUnits = "M";
+    currentUnits = "C";
+    speedUnitsDisplay.textContent = " m/s";
+    unitSymbol.forEach(e => e.textContent = "C");
+
+
     errorMessage.classList.add("d-none");
     location.value = "";
     weatherInfoDisplay.classList.add("d-none");
@@ -126,7 +136,7 @@ function updateDisplay(city, lat, lon) {
 
 }
 
-function changeUnits() {
+function changeTempUnits() {
     const temperature = document.getElementById("maintemp");
     const feelstemperatureDisplay = document.getElementById("temp");
     const minTempDisplay = document.getElementById("mintemp");
@@ -163,8 +173,29 @@ function changeUnits() {
 
 }
 
-function convertToF(tempInC) {
-    return Math.floor((parseFloat(tempInC) * (9 / 5)) + 32)
+function convertSpeedUnits() {
+    const currentSpeedDisplay = document.getElementById("windspeed");
+    const speedUnitsDisplay = document.getElementById("speedunits");
+    let currentSpeed = parseFloat(currentSpeedDisplay.textContent);
+    let updatedSpeed;
+
+    if (currentSpeedUnits == "M") {
+        updatedSpeed = currentSpeed * 2.237;
+        currentSpeedDisplay.textContent = updatedSpeed.toFixed(1);
+        speedUnitsDisplay.textContent = " mph";
+        currentSpeedUnits = "I";
+    }
+    else if (currentSpeedUnits == "I") {
+        updatedSpeed = currentSpeed / 2.237;
+        currentSpeedDisplay.textContent = updatedSpeed.toFixed(1);
+        speedUnitsDisplay.textContent = " m/s";
+        currentSpeedUnits = "M";
+    }
+
+
+
+
+
 }
 
 function formatDescription(string) {
