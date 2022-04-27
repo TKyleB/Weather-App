@@ -13,9 +13,11 @@ function restartApp() {
     const mainDisplay = document.querySelector(".weatherbox");
     const weatherInfoDisplay = document.querySelector(".weather-info");
     const location = document.getElementById("location");
+    const errorMessage = document.querySelector(".error");
+    errorMessage.classList.add("d-none");
     location.value = "";
-    weatherInfoDisplay.style.display = "none";
-    mainDisplay.style.display = "block";
+    weatherInfoDisplay.classList.add("d-none");
+    mainDisplay.classList.remove("d-none");
 }
 
 function getGeoLocation() {
@@ -56,17 +58,19 @@ async function getWeather(city, lat, lon) {
     const response = await fetch(weatherAPIURL);
     if (response.ok) {
         const data = await response.json();
+        console.log(data);
         let cityName = data.name;
         let country = data.sys.country;
         let currentTemp = data.main.temp;
-        let cloudness = data.clouds.all;
+        let weatherMain = data.weather[0].main;
+        let weatherDescription = data.weather[0].description;
         let feelsLikeTemp = data.main.feels_like;
         let lowTemp = data.main.temp_min;
         let highTemp = data.main.temp_max;
         let pressure = data.main.pressure;
         let humidity = data.main.humidity;
 
-        return { currentTemp, feelsLikeTemp, lowTemp, highTemp, pressure, humidity, cityName, country, cloudness }
+        return { currentTemp, feelsLikeTemp, lowTemp, highTemp, pressure, humidity, cityName, country, weatherMain, weatherDescription }
     } else return null;
 
 
@@ -82,9 +86,9 @@ function updateDisplay(city, lat, lon) {
     data.then(e => {
         if (e != null) {
             const mainDisplay = document.querySelector(".weatherbox");
-            mainDisplay.style.display = "none";
+            mainDisplay.classList.add("d-none");
             const weatherInfoDisplay = document.querySelector(".weather-info");
-            weatherInfoDisplay.style.display = "block";
+            weatherInfoDisplay.classList.remove("d-none");
             const temperature = document.getElementById("maintemp")
             const skyConditionDisplay = document.getElementById("skycondition");
             const cloudDetail = document.getElementById("clouddetails");
@@ -102,22 +106,12 @@ function updateDisplay(city, lat, lon) {
             pressureDisplay.textContent = Math.floor(parseInt(e.pressure) * 0.02952998307144475);
             minTempDisplay.textContent = e.lowTemp.toFixed(1);
             maxTempDisplay.textContent = e.highTemp.toFixed(1);
+            skyConditionDisplay.textContent = e.weatherMain;
+            cloudDetail.textContent = formatDescription(e.weatherDescription);
 
-            if (parseInt(e.cloudness) == 0) {
-                skyConditionDisplay.textContent = "Clear";
-                cloudDetail.textContent = "Clear Skies"
-            }
-            if (parseInt(e.cloudness) > 0) {
-                skyConditionDisplay.textContent = "Clouds";
-                cloudDetail.textContent = "Some Clouds";
-            }
-            if (parseInt(e.cloudness) > 50) {
-                skyConditionDisplay.textContent = "Clouds";
-                cloudDetail.textContent = "Very Cloudy";
-            }
         } else {
             const errorMessage = document.querySelector(".error");
-            errorMessage.style.display = "block";
+            errorMessage.classList.remove("d-none");
 
         }
 
@@ -168,4 +162,8 @@ function changeUnits() {
 
 function convertToF(tempInC) {
     return Math.floor((parseFloat(tempInC) * (9 / 5)) + 32)
+}
+
+function formatDescription(string) {
+    return string.split(" ").map(e => e[0] = e.charAt(0).toUpperCase() + e.slice(1)).join(" ");
 }
