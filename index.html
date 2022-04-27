@@ -59,27 +59,36 @@
                             <div class="fs-2" id="clouddetails"></div>
                         </div>
                     </div>
-                    <div class="d-flex py-3 justify-content-between">
-                        <div class="d-flex flex-column justify-content-center align-items-center me-2">
+                    <div class="row">
+
+                        <div class="col-4 text-center">
                             <div class="units">Feels Like</div>
                             <div><span id="temp"></span> <span>&deg; </span><span class="tempunit">C</span></div>
                         </div>
-                        <div class="d-flex flex-column justify-content-center align-items-center mx-2">
-                            <div class="units">Humidity</div>
-                            <div><span id="humidity"></span><span> %</span></div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center align-items-center mx-2">
-                            <div class="units">Pressure</div>
-                            <div><span id="pressure"></span><span> inHg</span></div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                        <div class="col-4 text-center">
                             <div class="units">Min Temp</div>
                             <div><span id="mintemp"></span> <span>&deg; </span><span class="tempunit">C</span></div>
                         </div>
-                        <div class="d-flex flex-column justify-content-center align-items-center ms-2">
+                        <div class="col-4 text-center">
                             <div class="units">Max Temp</div>
                             <div><span id="maxtemp"></span> <span>&deg; </span><span class="tempunit">C</span></div>
                         </div>
+
+                        <div class="col-4 text-center">
+                            <div class="units">Pressure</div>
+                            <div><span id="pressure"></span><span> inHg</span></div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="units">Humidity</div>
+                            <div><span id="humidity"></span><span> %</span></div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="units">Wind Speed</div>
+                            <div><span id="windspeed"></span><span> m/s</span></div>
+                        </div>
+
+
+
                     </div>
                     <div class="d-flex gap-2">
                         <button id="unitsbutton" class="btn w-50 search-button">Change Units</button>

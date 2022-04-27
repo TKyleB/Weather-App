@@ -69,8 +69,9 @@ async function getWeather(city, lat, lon) {
         let highTemp = data.main.temp_max;
         let pressure = data.main.pressure;
         let humidity = data.main.humidity;
+        let windSpeed = data.wind.speed;
 
-        return { currentTemp, feelsLikeTemp, lowTemp, highTemp, pressure, humidity, cityName, country, weatherMain, weatherDescription }
+        return { currentTemp, feelsLikeTemp, lowTemp, highTemp, pressure, humidity, cityName, country, weatherMain, weatherDescription, windSpeed }
     } else return null;
 
 
@@ -98,6 +99,7 @@ function updateDisplay(city, lat, lon) {
             const pressureDisplay = document.getElementById("pressure");
             const minTempDisplay = document.getElementById("mintemp");
             const maxTempDisplay = document.getElementById("maxtemp");
+            const windSpeedDisplay = document.getElementById("windspeed");
 
             cityDisplay.textContent = `${e.cityName}, ${e.country}`;
             temperature.textContent = parseFloat(e.currentTemp).toFixed(1);
@@ -108,6 +110,7 @@ function updateDisplay(city, lat, lon) {
             maxTempDisplay.textContent = e.highTemp.toFixed(1);
             skyConditionDisplay.textContent = e.weatherMain;
             cloudDetail.textContent = formatDescription(e.weatherDescription);
+            windSpeedDisplay.textContent = e.windSpeed;
 
         } else {
             const errorMessage = document.querySelector(".error");
